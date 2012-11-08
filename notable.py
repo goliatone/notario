@@ -47,7 +47,7 @@ class MinionNotesController(controller.CementBaseController):
     def _setup(self, base_app):
         super(MinionNotesController, self)._setup(base_app)
 
-        self.dir = os.path.dirname(os.path.realpath(__file__))
+        # self.dir = os.path.dirname(os.path.realpath(__file__))
         self.dir = os.path.expanduser('~')
         #TODO: Get from config file.
         #TODO: We want to use $EDITOR, how to expant to value?
@@ -88,7 +88,7 @@ class MinionNotesController(controller.CementBaseController):
         #x = 'default' if not x else x
         (namespace, n, c, cp, pt, e, editor, p) = vars(self.pargs)
         c = 'empty' if not c else c
-        self.log.info('Hola' + c)
+        self.log.info('Hola ' + c)
         # Send a simple growl message with mostly default values
         #gntp.notifier.mini("Here's a quick message", callback="http://github.com/")
         #self.log.info("Received option foo with value '%s'"% o)

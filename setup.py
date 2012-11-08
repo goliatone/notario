@@ -8,7 +8,7 @@ version = '0.1.0'
 description = "A command-line interface to the GitHub Issues API v2."
 cur_dir = os.path.dirname(__file__)
 try:
-    long_description = open(os.path.join(cur_dir, 'README.rst')).read()
+    long_description = open(os.path.join(cur_dir, 'README.md')).read()
 except:
     long_description = description
 
@@ -38,5 +38,5 @@ setup(
         'Programming Language :: Python',
         'Topic :: Utilities',
     ],
-    test_suite='nose.collector',
+    # test_suite='nose.collector',
 )
