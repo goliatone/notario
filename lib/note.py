@@ -1,4 +1,4 @@
-from sarge import shell_format
+# from sarge import shell_format
 from subprocess import call
 from path import path
 
@@ -37,9 +37,9 @@ class Note:
 
         note = self.path + name + self.ext
         note = path(note).abspath()
-        call([editor, shell_format(note)])
-        #shell_command = self.editor +' '+ note
-        #print shell_command
+        call([editor, note])
+        # call([editor, shell_format(note)])
+        # print shell_format(note)
 
     def edit(self, name, content):
         """
