@@ -25,3 +25,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# ST2
+*.sublime-project
+*.sublime-workspace
+
+.DS_Store
+*/.DS_Store
