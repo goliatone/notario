@@ -22,7 +22,7 @@ from lib.note import Note
 class MinionNotesController(controller.CementBaseController):
     class Meta:
         label = 'base'
-        description = "My Application does amazing things!"
+        description = "Notable, a simple command line interface to manage notes."
 
         config_defaults = dict(
             note='Note',
@@ -115,7 +115,7 @@ class MinionNotesController(controller.CementBaseController):
         note = self.pargs.note
         self.note.open(note)
 
-    @controller.expose(help="Create a new thang.")
+    @controller.expose(help="Create a new Note.")
     def new(self):
         name = self.pargs.note
         content = self.pargs.content
