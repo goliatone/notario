@@ -21,6 +21,7 @@ class NotableBaseController(controller.CementBaseController):
     class Meta:
         label = 'base'
         description = 'Notable, a simple command line utility to manage notes.'
+
         config_defaults = dict(
             note='Note',
             e='subl',
@@ -39,17 +40,17 @@ class NotableBaseController(controller.CementBaseController):
                                     help='Opens Note in users default editor.')),
             (['-editor'], dict(action='store',
                                     help='Opens Note in given editor.')),
-            (['-version'], dict(action='version', version=BANNER))
+            (['-v', '--version'], dict(action='version', version=BANNER))
         ]
 
     def _setup(self, base_app):
         super(NotableBaseController, self)._setup(base_app)
 
-        self.dir = os.path.expanduser('~')
+        # expand config so we can send it to the note.
+        options = dict(self.config.items('notable'))
 
-        # TODO: Get from config file
         # TODO: We want to use $EDITOR, how to get that value?
-        self.note = Note(self.dir + "/.notes", ".txt", "subl")
+        self.note = Note(**options)
 
     @controller.expose(hide=True, aliases=['run'])
     def default(self):

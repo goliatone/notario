@@ -22,7 +22,8 @@ setup(
     long_description=long_description,
     author='goliatone',
     author_email='hello@goliatone.com',
-    packages=find_packages('notable', exclude=['tests', 'experimental']),
+    packages=find_packages('notable',
+                            exclude=['tests', 'experimental']),
     package_dir={'': 'notable'},
     install_requires=['setuptools', 'cement'],
     entry_points="""

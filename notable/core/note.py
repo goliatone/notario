@@ -100,15 +100,23 @@ class Note:
             notes.makedirs()
         return notes
 
-    def __init__(self, path, ext, editor):
-        #We should prob do real sanity check ;)
-        if not path.endswith('/'):
-            path += '/'
+    def __init__(self, dir, ext, edt, **rst):
+        """
+        Keyword arguments:
+        dir -- path to the target directory.
+        ext -- extension for the note files.
+        edt -- editor used to open notes.
+        rst -- rest of parameters, used so we can expan config
+        """
 
-        self.path = path
+        #We should prob do real sanity check ;)
+        if not dir.endswith('/'):
+            dir += '/'
+
+        self.path = dir
 
         self._ensure_dir_exists()
 
-        self.editor = editor
+        self.editor = edt
         self.ext = ext
         self.lxt = ext.__len__()
