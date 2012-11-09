@@ -35,5 +35,7 @@ directory
 - TODO: Refactor and rewrite tests.
 - TODO: Use nosetests.
 - TODO: Add sphinx integration.
+- TODO: Let user update defaults, and save.
+- TODO: Use args for `name` and `content` instead.
 - ~~TODO:~~ Use config.
 - REVIEW: Rename config.ini to notable.conf (?)

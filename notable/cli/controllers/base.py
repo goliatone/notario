@@ -154,6 +154,8 @@ class NotableBaseController(controller.CementBaseController):
         name = self.pargs.note
         self.note.delete(name)
 
+        print "Note %s deleted." % name
+
     @controller.expose(aliases=['cp'], help="Puts the content of a note into the clipboard.")
     def copy(self):
         """
