@@ -37,5 +37,6 @@ directory
 - TODO: Add sphinx integration.
 - TODO: Let user update defaults, and save.
 - TODO: Use args for `name` and `content` instead.
+- TODO: Add `vervose` options.
 - ~~TODO:~~ Use config.
 - REVIEW: Rename config.ini to notable.conf (?)

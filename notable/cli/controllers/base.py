@@ -63,7 +63,7 @@ class NotableBaseController(controller.CementBaseController):
         # we are just unboxing all the args
         (namespace, n, c, cp, pt, e, editor, p) = vars(args)
         c = 'empty' if not c else c
-        self.log.info('Content: ' + c)
+        # self.log.info('Content: ' + c)
 
         # Let's figure out the action based on the
         # arguments we got:
@@ -92,7 +92,7 @@ class NotableBaseController(controller.CementBaseController):
         else:
             self.editor = None
 
-        self.log.info("We are executing action: " + action)
+        # self.log.info("We are executing action: " + action)
 
         # dinamically access the required method:
         action = getattr(self, action)
