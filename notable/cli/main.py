@@ -1,8 +1,12 @@
 import os
-# import sys
+import sys
 from cement.core import foundation, backend
 from cement.core import exc as cement_exc
 from cement.utils import fs
+
+# for some reason, we need this to find modules...?
+sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+
 from notable.cli.controllers.base import NotableBaseController
 from notable.core import exc as notable_exc
 
