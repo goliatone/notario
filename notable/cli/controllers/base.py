@@ -7,12 +7,13 @@ BANNER = """
 =====================================
   _   _       _             _
  | \ | | ___ | |_ __ _ _ __(_) ___
- |  \| |/ _ \| __/ _` | '__| |/ _ \
+ |  \| |/ _ \| __/ _` | '__| |/ _ \.
  | |\  | (_) | || (_| | |  | | (_) |
  |_| \_|\___/ \__\__,_|_|  |_|\___/
 
-============= (c) 2012 goliatone ====
-                       v%s
+============ (c) 2012 goliatone =====
+v%s
+-------------------------------------
  """ % VERSION
 
 
@@ -38,7 +39,7 @@ class NotableBaseController(controller.CementBaseController):
                                     help='Opens Note in users default editor.')),
             (['-editor'], dict(action='store',
                                     help='Opens Note in given editor.')),
-            (['-version', dict(action='version', version=BANNER)])
+            (['-version'], dict(action='version', version=BANNER))
         ]
 
     def _setup(self, base_app):

@@ -25,7 +25,7 @@ class NotableApp(foundation.CementApp):
         label = 'notable'
         # bootstrap = 'notable.cli.bootstrap'
         base_controller = NotableBaseController
-        config_defaults = defaults
+        # config_defaults = defaults
 
         # REVIEW: Should extension be .conf instead?
         config_files = [
@@ -38,9 +38,11 @@ class NotableApp(foundation.CementApp):
     def validate_config(self):
         # fix paths
         def_dir = self.config.get('notable', 'dir')
-        abs_dir = fs.abspath(def_dir)
+        print def_dir
+        print os.path.expanduser('~') + "/.notes/"
+        abs_dir = os.path.expanduser('~') + def_dir
         self.config.set('notable', 'dir', abs_dir)
-
+        print "Abs path: %s" % abs_dir
         # create abs_path
         if not os.path.exists(abs_dir):
             os.makedirs(abs_dir)
@@ -49,13 +51,14 @@ class NotableApp(foundation.CementApp):
 def run():
 
     app = NotableApp()
+    # app = NotableApp(config_files=[config_path])
 
     #handler
     try:
         app.setup()
         print app.config.get_sections()
         print app.config.options('notable')
-        app.runt()
+        app.run()
     except notable_exc.NotableArgumentError as e:
         print("NotableArgumentError: %s" % e.msg)
     except cement_exc.CaughtSignal as e:

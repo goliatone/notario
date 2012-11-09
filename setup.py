@@ -3,9 +3,10 @@
 import os
 from setuptools import setup, find_packages
 
-version = '0.1.0'
+from notable import VERSION
 
-description = "A command-line interface to the GitHub Issues API v2."
+description = "A command-line utility to manage Notes."
+
 cur_dir = os.path.dirname(__file__)
 try:
     long_description = open(os.path.join(cur_dir, 'README.md')).read()
@@ -14,14 +15,14 @@ except:
 
 setup(
     name="notable",
-    version=version,
+    version=VERSION,
     url='https://github.com/goliatone/notable',
     license='MIT',
     description=description,
     long_description=long_description,
     author='goliatone',
     author_email='hello@goliatone.com',
-    packages=find_packages('notabl'),
+    packages=find_packages('notable', exclude=['tests', 'experimental']),
     package_dir={'': 'notable'},
     install_requires=['setuptools', 'cement'],
     entry_points="""
