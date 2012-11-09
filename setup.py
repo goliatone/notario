@@ -21,12 +21,12 @@ setup(
     long_description=long_description,
     author='goliatone',
     author_email='hello@goliatone.com',
-    packages=find_packages('lib'),
-    # package_dir={'': 'lib'},
+    packages=find_packages('notabl'),
+    package_dir={'': 'notable'},
     install_requires=['setuptools', 'cement'],
     entry_points="""
     [console_scripts]
-    notable = notable:run
+    notable = notable.cli.main:run
     """,
     classifiers=[
         'Development Status :: 3 - Alpha',
