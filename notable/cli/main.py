@@ -2,18 +2,20 @@ import os
 import sys
 from cement.core import foundation, backend
 from cement.core import exc as cement_exc
-from cement.utils import fs
+# from cement.utils import fs
 
 # for some reason, we need this to find modules...?
-sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+module_path = os.path.join(os.path.dirname(__file__), '../..')
+sys.path.append(module_path)
 
 from notable.cli.controllers.base import NotableBaseController
 from notable.core import exc as notable_exc
 
+
  # TODO: figure out if we want to have also a ~/notable.ini
 file_path = os.path.abspath(__file__)
 base_path = os.path.dirname(file_path)
-config_path = os.path.dirname(file_path) + '/config.ini'
+config_path = os.path.join(module_path, 'data/config/notable.cfg')
 
 defaults = backend.defaults('notable')
 defaults['notable']['dir'] = "/.notes/"
@@ -32,8 +34,8 @@ class NotableApp(foundation.CementApp):
         # REVIEW: Should extension be .conf instead?
         config_files = [
             config_path,
-            '/etc/notable/notable.ini',
-            '~/.notable.ini',
+            '/etc/notable/notable.cfg',
+            '~/.notable.cfg',
             '~/.notable/config'
         ]
 

@@ -16,9 +16,7 @@ except:
 
 datadir = os.path.join(cur_dir, 'data', 'config')
 datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
-print '*' * 20
-print datafiles
-print '*' * 20
+
 setup(
     name="notable",
     version=VERSION,
@@ -29,10 +27,9 @@ setup(
     author='goliatone',
     author_email='hello@goliatone.com',
     keywords='command-line utils notes',
-    packages=find_packages('notable',
-                            exclude=['experimental']),
+    packages=find_packages(exclude=['experimental']),
                             # exclude=['tests', 'experimental']),
-    package_dir={'': 'notable'},
+    # package_dir={'': 'notable'},
     # package_data={'': ['config.ini']},
     data_files=datafiles,
     install_requires=['setuptools', 'cement'],
