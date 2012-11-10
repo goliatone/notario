@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>controllers Package &mdash; Notable 0.4.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Notable 0.4.0 documentation" href="index.html" />
+    <link rel="up" title="cli Package" href="notable.cli.html" />
+    <link rel="next" title="core Package" href="notable.core.html" />
+    <link rel="prev" title="cli Package" href="notable.cli.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notable.core.html" title="core Package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="notable.cli.html" title="cli Package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Notable 0.4.0 documentation</a> &raquo;</li>
+          <li><a href="notable.html" >notable Package</a> &raquo;</li>
+          <li><a href="notable.cli.html" accesskey="U">cli Package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="controllers-package">
+<h1>controllers Package<a class="headerlink" href="#controllers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-notable.cli.controllers.base">
+<span id="base-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">base</span></tt> Module<a class="headerlink" href="#module-notable.cli.controllers.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="notable.cli.controllers.base.NotableBaseController">
+<em class="property">class </em><tt class="descclassname">notable.cli.controllers.base.</tt><tt class="descname">NotableBaseController</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">cement.core.controller.CementBaseController</span></tt></p>
+<dl class="class">
+<dt id="notable.cli.controllers.base.NotableBaseController.Meta">
+<em class="property">class </em><tt class="descname">Meta</tt><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="notable.cli.controllers.base.NotableBaseController.Meta.arguments">
+<tt class="descname">arguments</tt><em class="property"> = [(['-n', '--note'], {'action': 'store', 'help': &quot;The note's name.&quot;}), (['-c', '--content'], {'action': 'store', 'help': 'Create a new note.'}), (['-cp', '--copy'], {'action': 'store_true', 'help': 'Copy note to clipboard'}), (['-pt', '--paste'], {'action': 'store_true', 'help': 'Copy note from clipboard'}), (['-e'], {'action': 'store_const', 'const': 'subl', 'help': 'Opens Note in users default editor.'}), (['-editor'], {'action': 'store', 'help': 'Opens Note in given editor.'}), (['-v', '--version'], {'action': 'version', 'version': &quot;\n=====================================\n  _   _       _             _\n | \\ | | ___ | |_ __ _ _ __(_) ___\n |  \\| |/ _ \\| __/ _` | '__| |/ _ \\.\n | |\\  | (_) | || (_| | |  | | (_) |\n |_| \\_|\\___/ \\__\\__,_|_|  |_|\\___/\n\n============ (c) 2012 goliatone =====\nv0.4.0\n-------------------------------------\n &quot;})]</em><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.Meta.arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="notable.cli.controllers.base.NotableBaseController.Meta.config_defaults">
+<tt class="descname">config_defaults</tt><em class="property"> = {'debug': True, 'note': 'Note', 'e': 'subl'}</em><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.Meta.config_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="notable.cli.controllers.base.NotableBaseController.Meta.description">
+<tt class="descname">description</tt><em class="property"> = 'Notable, a simple command line utility to manage notes.'</em><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.Meta.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="notable.cli.controllers.base.NotableBaseController.Meta.label">
+<tt class="descname">label</tt><em class="property"> = 'base'</em><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.Meta.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.clip">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">clip</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.clip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.clip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.copy">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">copy</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts the content of a note into the clipboard.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.default">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">default</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.delete">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">delete</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.edit">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">edit</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.edit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.list">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">list</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.new">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">new</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.new" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.open">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">open</tt><big>(</big><em>editor='subl'</em><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="notable.cli.controllers.base.NotableBaseController.show">
+<tt class="descclassname">NotableBaseController.</tt><tt class="descname">show</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/notable/cli/controllers/base.html#NotableBaseController.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#notable.cli.controllers.base.NotableBaseController.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">controllers Package</a><ul>
+<li><a class="reference internal" href="#module-notable.cli.controllers.base"><tt class="docutils literal"><span class="pre">base</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="notable.cli.html"
+                        title="previous chapter">cli Package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="notable.core.html"
+                        title="next chapter">core Package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/notable.cli.controllers.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notable.core.html" title="core Package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="notable.cli.html" title="cli Package"
+             >previous</a> |</li>
+        <li><a href="index.html">Notable 0.4.0 documentation</a> &raquo;</li>
+          <li><a href="notable.html" >notable Package</a> &raquo;</li>
+          <li><a href="notable.cli.html" >cli Package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, goliatone.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>notable.cli.controllers.base &mdash; Notable 0.4.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="Notable 0.4.0 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Notable 0.4.0 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for notable.cli.controllers.base</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">cement.core</span> <span class="kn">import</span> <span class="n">controller</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">notable</span> <span class="kn">import</span> <span class="n">VERSION</span>
+<span class="kn">from</span> <span class="nn">notable.core.note</span> <span class="kn">import</span> <span class="n">Note</span>
+
+<span class="n">BANNER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">=====================================</span>
+<span class="s">  _   _       _             _</span>
+<span class="s"> | \ | | ___ | |_ __ _ _ __(_) ___</span>
+<span class="s"> |  \| |/ _ \| __/ _` | &#39;__| |/ _ \.</span>
+<span class="s"> | |\  | (_) | || (_| | |  | | (_) |</span>
+<span class="s"> |_| \_|\___/ \__\__,_|_|  |_|\___/</span>
+
+<span class="s">============ (c) 2012 goliatone =====</span>
+<span class="s">v</span><span class="si">%s</span><span class="s"></span>
+<span class="s">-------------------------------------</span>
+<span class="s"> &quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">VERSION</span>
+
+
+<div class="viewcode-block" id="NotableBaseController"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController">[docs]</a><span class="k">class</span> <span class="nc">NotableBaseController</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">CementBaseController</span><span class="p">):</span>
+<div class="viewcode-block" id="NotableBaseController.Meta"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;base&#39;</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s">&#39;Notable, a simple command line utility to manage notes.&#39;</span>
+
+        <span class="n">config_defaults</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">note</span><span class="o">=</span><span class="s">&#39;Note&#39;</span><span class="p">,</span>
+            <span class="n">e</span><span class="o">=</span><span class="s">&#39;subl&#39;</span><span class="p">,</span>
+            <span class="n">debug</span><span class="o">=</span><span class="bp">True</span>
+        <span class="p">)</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">([</span><span class="s">&#39;-n&#39;</span><span class="p">,</span> <span class="s">&#39;--note&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span>
+                                    <span class="n">help</span><span class="o">=</span><span class="s">&quot;The note&#39;s name.&quot;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-c&#39;</span><span class="p">,</span> <span class="s">&#39;--content&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span>
+                                        <span class="n">help</span><span class="o">=</span><span class="s">&#39;Create a new note.&#39;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-cp&#39;</span><span class="p">,</span> <span class="s">&#39;--copy&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span>
+                                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Copy note to clipboard&#39;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-pt&#39;</span><span class="p">,</span> <span class="s">&#39;--paste&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span>
+                                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Copy note from clipboard&#39;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-e&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store_const&#39;</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span><span class="s">&#39;subl&#39;</span><span class="p">,</span>
+                                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Opens Note in users default editor.&#39;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-editor&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span>
+                                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Opens Note in given editor.&#39;</span><span class="p">)),</span>
+            <span class="p">([</span><span class="s">&#39;-v&#39;</span><span class="p">,</span> <span class="s">&#39;--version&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">BANNER</span><span class="p">))</span>
+        <span class="p">]</span>
+</div>
+    <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_app</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NotableBaseController</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_setup</span><span class="p">(</span><span class="n">base_app</span><span class="p">)</span>
+
+        <span class="c"># expand config so we can send it to the note.</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s">&#39;notable&#39;</span><span class="p">))</span>
+
+        <span class="c"># TODO: We want to use $EDITOR, how to get that value?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;run&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="NotableBaseController.default"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c">#short</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span>
+
+        <span class="c"># default action</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="s">&#39;list&#39;</span>
+
+        <span class="c"># we are just unboxing all the args</span>
+        <span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">pt</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="s">&#39;empty&#39;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span> <span class="k">else</span> <span class="n">c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;Content: &#39;</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+
+        <span class="c"># Let&#39;s figure out the action based on the</span>
+        <span class="c"># arguments we got:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">note</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exists</span><span class="p">():</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="s">&#39;new&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="s">&#39;show&#39;</span>
+
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="s">&#39;edit&#39;</span>
+
+        <span class="c"># we want the content of the note in the</span>
+        <span class="c"># clipboard</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c"># we have the actual content of the note</span>
+        <span class="c"># in the clipboard. Get it!</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">paste</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_clip</span><span class="p">()</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="s">&#39;edit&#39;</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">editor</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">editor</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">editor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">editor</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We are executing action: &quot;</span> <span class="o">+</span> <span class="n">action</span><span class="p">)</span>
+
+        <span class="c"># dinamically access the required method:</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+        <span class="n">action</span><span class="p">()</span>
+
+        <span class="c"># do we want to edit our note?</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">e</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">editor</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">note</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
+
+        <span class="c"># Send a simple growl message with mostly default values</span>
+        <span class="c">#gntp.notifier.mini(&quot;Here&#39;s a quick message&quot;, callback=&quot;http://github.com/&quot;)</span>
+        <span class="c">#self.log.info(&quot;Received option foo with value &#39;%s&#39;&quot;% o)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ls&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;List all the notes.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.list"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;No notes found.&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c">#print &quot;Listing all Notes:&quot;</span>
+            <span class="k">print</span> <span class="n">o</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Shows the Note with the given name.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.show"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">note</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;The note </span><span class="si">%s</span><span class="s"> is empty.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">note</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Opens the Note in a new editor window.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.open"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="o">=</span><span class="s">&quot;subl&quot;</span><span class="p">):</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Create a new Note.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.new"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">content</span>
+        <span class="c"># We create a new file for the note.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="c"># if we created a new note, but did</span>
+        <span class="c"># not provide content, we assume we</span>
+        <span class="c"># want to create + edit in IDE</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">content</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Add content to a note. Optionally opens editor.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.edit"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">content</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Delete Note.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.delete"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cp&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;Puts the content of a note into the clipboard.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.copy"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Puts the content of a note into the clipboard.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_clip</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Use the clipboard&#39;s content.&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NotableBaseController.clip"><a class="viewcode-back" href="../../../../notable.cli.controllers.html#notable.cli.controllers.base.NotableBaseController.clip">[docs]</a>    <span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_clip</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</div>
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        After we edit a note, we put it&#39;s content</span>
+<span class="sd">        in the clipboard</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_clip</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">outf</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s">&#39;pbpaste&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">outf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">outf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">content</span>
+
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="n">outf</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s">&#39;pbpaste&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">outf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Notable 0.4.0 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, goliatone.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
