@@ -46,4 +46,5 @@ Roadmap
 -  TODO: Add ``vervose`` options.
 -  TODO: Add create from template.
 -  DONE: Use config.
+-  TODO: Integration with services.
 -  REVIEW: Rename config.ini to notario.conf (?)
