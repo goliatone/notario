@@ -4,7 +4,7 @@ import os
 import glob
 from setuptools import setup, find_packages
 
-from notable import VERSION
+from notario import VERSION
 
 description = "A command-line utility to manage notes."
 
@@ -18,24 +18,21 @@ datadir = os.path.join(cur_dir, 'data', 'config')
 datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
-    name="notable",
+    name="notario",
     version=VERSION,
     description=description,
     long_description=long_description,
-    url='https://github.com/goliatone/notable',
+    url='https://github.com/goliatone/notario',
     license='MIT',
     author='goliatone',
     author_email='hello@goliatone.com',
     keywords='command-line utils notes',
     packages=find_packages(exclude=['experimental']),
-                            # exclude=['tests', 'experimental']),
-    # package_dir={'': 'notable'},
-    # package_data={'': ['config.ini']},
     data_files=datafiles,
     install_requires=['setuptools', 'cement'],
     entry_points="""
     [console_scripts]
-    notable = notable.cli.main:run
+    notario = notario.cli.main:run
     """,
     classifiers=[
         'Development Status :: 3 - Alpha',

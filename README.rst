@@ -1,4 +1,4 @@
-Notable
+Notario
 =======
 
 About
@@ -16,23 +16,23 @@ Installation
 
 ::
 
-      pip install notable
+      pip install notario
 
 **from source**
 
 ::
 
-      pip notable git+http://github.com/goliatone/notable
+      pip notario git+http://github.com/goliatone/notario
 
 *or*
 
 ::
 
-      git clone git@github.com:goliatone/notable.git
-      cd notable
+      git clone git@github.com:goliatone/notario.git
+      cd notario
       python setup.py install
 
-as a result, the ``notable`` executable will be installed into a system
+as a result, the ``notario`` executable will be installed into a system
 ``bin`` directory
 
 Roadmap
@@ -44,5 +44,6 @@ Roadmap
 -  TODO: Let user update defaults, and save.
 -  TODO: Use args for ``name`` and ``content`` instead.
 -  TODO: Add ``vervose`` options.
+-  TODO: Add create from template.
 -  DONE: Use config.
--  REVIEW: Rename config.ini to notable.conf (?)
+-  REVIEW: Rename config.ini to notario.conf (?)
