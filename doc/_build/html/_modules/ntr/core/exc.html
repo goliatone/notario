@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>notario.core.exc &mdash; Notario 0.5.0 documentation</title>
+    <title>ntr.core.exc &mdash; Notario 0.5.0 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -48,11 +48,11 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for notario.core.exc</h1><div class="highlight"><pre>
+  <h1>Source code for ntr.core.exc</h1><div class="highlight"><pre>
 <span class="sd">&quot;&quot;&quot;Notario core exceptions module.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="NotarioError"><a class="viewcode-back" href="../../../notario.core.html#notario.core.exc.NotarioError">[docs]</a><span class="k">class</span> <span class="nc">NotarioError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioError"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.exc.NotarioError">[docs]</a><span class="k">class</span> <span class="nc">NotarioError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generic errors.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="ne">Exception</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -62,15 +62,15 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg</span>
 
 </div>
-<div class="viewcode-block" id="NotarioConfigError"><a class="viewcode-back" href="../../../notario.core.html#notario.core.exc.NotarioConfigError">[docs]</a><span class="k">class</span> <span class="nc">NotarioConfigError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioConfigError"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.exc.NotarioConfigError">[docs]</a><span class="k">class</span> <span class="nc">NotarioConfigError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
     <span class="k">pass</span>
 
 </div>
-<div class="viewcode-block" id="NotarioRuntimeError"><a class="viewcode-back" href="../../../notario.core.html#notario.core.exc.NotarioRuntimeError">[docs]</a><span class="k">class</span> <span class="nc">NotarioRuntimeError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioRuntimeError"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.exc.NotarioRuntimeError">[docs]</a><span class="k">class</span> <span class="nc">NotarioRuntimeError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
     <span class="k">pass</span>
 
 </div>
-<div class="viewcode-block" id="NotarioArgumentError"><a class="viewcode-back" href="../../../notario.core.html#notario.core.exc.NotarioArgumentError">[docs]</a><span class="k">class</span> <span class="nc">NotarioArgumentError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioArgumentError"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.exc.NotarioArgumentError">[docs]</a><span class="k">class</span> <span class="nc">NotarioArgumentError</span><span class="p">(</span><span class="n">NotarioError</span><span class="p">):</span>
     <span class="k">pass</span></div>
 </pre></div>
 

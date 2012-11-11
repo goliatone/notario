@@ -1,10 +1,10 @@
-notario Package
+ntr Package
 ===============
 
-:mod:`notario` Package
+:mod:`ntr` Package
 ----------------------
 
-.. automodule:: notario.__init__
+.. automodule:: ntr.__init__
     :members:
     :undoc-members:
     :show-inheritance:
@@ -14,6 +14,6 @@ Subpackages
 
 .. toctree::
 
-    notario.cli
-    notario.core
+    ntr.cli
+    ntr.core
 

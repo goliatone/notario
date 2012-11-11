@@ -4,7 +4,7 @@ controllers Package
 :mod:`base` Module
 ------------------
 
-.. automodule:: notario.cli.controllers.base
+.. automodule:: ntr.cli.controllers.base
     :members:
     :undoc-members:
     :show-inheritance:

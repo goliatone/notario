@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>notario.cli.controllers.base &mdash; Notario 0.5.0 documentation</title>
+    <title>ntr.cli.controllers.base &mdash; Notario 0.5.0 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -48,11 +48,11 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for notario.cli.controllers.base</h1><div class="highlight"><pre>
+  <h1>Source code for ntr.cli.controllers.base</h1><div class="highlight"><pre>
 <span class="kn">from</span> <span class="nn">cement.core</span> <span class="kn">import</span> <span class="n">controller</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">notario</span> <span class="kn">import</span> <span class="n">VERSION</span>
-<span class="kn">from</span> <span class="nn">notario.core.note</span> <span class="kn">import</span> <span class="n">Note</span>
+<span class="kn">from</span> <span class="nn">ntr</span> <span class="kn">import</span> <span class="n">VERSION</span>
+<span class="kn">from</span> <span class="nn">ntr.core.note</span> <span class="kn">import</span> <span class="n">Note</span>
 
 <span class="n">BANNER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">=====================================</span>
@@ -68,8 +68,8 @@
 <span class="s"> &quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">VERSION</span>
 
 
-<div class="viewcode-block" id="NotarioBaseController"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController">[docs]</a><span class="k">class</span> <span class="nc">NotarioBaseController</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">CementBaseController</span><span class="p">):</span>
-<div class="viewcode-block" id="NotarioBaseController.Meta"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<div class="viewcode-block" id="NotarioBaseController"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController">[docs]</a><span class="k">class</span> <span class="nc">NotarioBaseController</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">CementBaseController</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.Meta"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;base&#39;</span>
         <span class="n">description</span> <span class="o">=</span> <span class="s">&#39;Notario, a simple command line utility to manage notes.&#39;</span>
 
@@ -104,7 +104,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
 
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">hide</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;run&#39;</span><span class="p">])</span>
-<div class="viewcode-block" id="NotarioBaseController.default"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.default"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c">#short</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span>
 
@@ -158,7 +158,7 @@
         <span class="c">#self.log.info(&quot;Received option foo with value &#39;%s&#39;&quot;% o)</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ls&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;List all the notes.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.list"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.list"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span><span class="p">:</span>
@@ -168,7 +168,7 @@
             <span class="k">print</span> <span class="n">o</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Shows the Note with the given name.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.show"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.show"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">note</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">note</span><span class="p">:</span>
@@ -177,12 +177,12 @@
             <span class="k">print</span> <span class="n">note</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Opens the Note in a new editor window.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.open"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="o">=</span><span class="s">&quot;subl&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.open"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="o">=</span><span class="s">&quot;subl&quot;</span><span class="p">):</span>
         <span class="n">note</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Create a new Note.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.new"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.new"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
         <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">content</span>
         <span class="c"># We create a new file for the note.</span>
@@ -195,20 +195,20 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Add content to a note. Optionally opens editor.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.edit"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.edit"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
         <span class="n">content</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">content</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Delete Note.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.delete"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.delete"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
         <span class="k">print</span> <span class="s">&quot;Note </span><span class="si">%s</span><span class="s"> deleted.&quot;</span> <span class="o">%</span> <span class="n">name</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cp&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;Puts the content of a note into the clipboard.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.copy"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.copy"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Puts the content of a note into the clipboard.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -217,7 +217,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_clip</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 </div>
     <span class="nd">@controller.expose</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Use the clipboard&#39;s content.&quot;</span><span class="p">)</span>
-<div class="viewcode-block" id="NotarioBaseController.clip"><a class="viewcode-back" href="../../../../notario.cli.controllers.html#notario.cli.controllers.base.NotarioBaseController.clip">[docs]</a>    <span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioBaseController.clip"><a class="viewcode-back" href="../../../../ntr.cli.controllers.html#ntr.cli.controllers.base.NotarioBaseController.clip">[docs]</a>    <span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="o">.</span><span class="n">note</span>
         <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_clip</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>

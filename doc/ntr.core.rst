@@ -4,7 +4,7 @@ core Package
 :mod:`exc` Module
 -----------------
 
-.. automodule:: notario.core.exc
+.. automodule:: ntr.core.exc
     :members:
     :undoc-members:
     :show-inheritance:
@@ -12,7 +12,7 @@ core Package
 :mod:`note` Module
 ------------------
 
-.. automodule:: notario.core.note
+.. automodule:: ntr.core.note
     :members:
     :undoc-members:
     :show-inheritance:

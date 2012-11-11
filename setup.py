@@ -4,7 +4,7 @@ import os
 import glob
 from setuptools import setup, find_packages
 
-from notario import VERSION
+from ntr import VERSION
 
 description = "A command-line utility to manage notes."
 
@@ -18,7 +18,7 @@ datadir = os.path.join(cur_dir, 'data', 'config')
 datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
-    name="notario",
+    name="Notario.minion",
     version=VERSION,
     description=description,
     long_description=long_description,
@@ -32,7 +32,7 @@ setup(
     install_requires=['setuptools', 'cement'],
     entry_points="""
     [console_scripts]
-    notario = notario.cli.main:run
+    ntr = ntr.cli.main:run
     """,
     classifiers=[
         'Development Status :: 3 - Alpha',

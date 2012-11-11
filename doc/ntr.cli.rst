@@ -4,7 +4,7 @@ cli Package
 :mod:`main` Module
 ------------------
 
-.. automodule:: notario.cli.main
+.. automodule:: ntr.cli.main
     :members:
     :undoc-members:
     :show-inheritance:
@@ -14,5 +14,5 @@ Subpackages
 
 .. toctree::
 
-    notario.cli.controllers
+    ntr.cli.controllers
 

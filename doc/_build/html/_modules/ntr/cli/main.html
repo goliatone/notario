@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>notario.cli.main &mdash; Notario 0.5.0 documentation</title>
+    <title>ntr.cli.main &mdash; Notario 0.5.0 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -48,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for notario.cli.main</h1><div class="highlight"><pre>
+  <h1>Source code for ntr.cli.main</h1><div class="highlight"><pre>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">cement.core</span> <span class="kn">import</span> <span class="n">foundation</span><span class="p">,</span> <span class="n">backend</span>
@@ -59,8 +59,8 @@
 <span class="n">module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&#39;../..&#39;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">notario.cli.controllers.base</span> <span class="kn">import</span> <span class="n">NotarioBaseController</span>
-<span class="kn">from</span> <span class="nn">notario.core</span> <span class="kn">import</span> <span class="n">exc</span> <span class="k">as</span> <span class="n">notario_exc</span>
+<span class="kn">from</span> <span class="nn">ntr.cli.controllers.base</span> <span class="kn">import</span> <span class="n">NotarioBaseController</span>
+<span class="kn">from</span> <span class="nn">ntr.core</span> <span class="kn">import</span> <span class="n">exc</span> <span class="k">as</span> <span class="n">ntr_exc</span>
 
 
  <span class="c"># TODO: figure out if we want to have also a ~/notario.ini</span>
@@ -74,10 +74,10 @@
 <span class="n">defaults</span><span class="p">[</span><span class="s">&#39;notario&#39;</span><span class="p">][</span><span class="s">&#39;edt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;subl&quot;</span>
 
 
-<div class="viewcode-block" id="NotarioApp"><a class="viewcode-back" href="../../../notario.cli.html#notario.cli.main.NotarioApp">[docs]</a><span class="k">class</span> <span class="nc">NotarioApp</span><span class="p">(</span><span class="n">foundation</span><span class="o">.</span><span class="n">CementApp</span><span class="p">):</span>
-<div class="viewcode-block" id="NotarioApp.Meta"><a class="viewcode-back" href="../../../notario.cli.html#notario.cli.main.NotarioApp.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<div class="viewcode-block" id="NotarioApp"><a class="viewcode-back" href="../../../ntr.cli.html#ntr.cli.main.NotarioApp">[docs]</a><span class="k">class</span> <span class="nc">NotarioApp</span><span class="p">(</span><span class="n">foundation</span><span class="o">.</span><span class="n">CementApp</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioApp.Meta"><a class="viewcode-back" href="../../../ntr.cli.html#ntr.cli.main.NotarioApp.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;notario&#39;</span>
-        <span class="c"># bootstrap = &#39;notario.cli.bootstrap&#39;</span>
+        <span class="c"># bootstrap = &#39;ntr.cli.bootstrap&#39;</span>
         <span class="n">base_controller</span> <span class="o">=</span> <span class="n">NotarioBaseController</span>
 
         <span class="n">config_defaults</span> <span class="o">=</span> <span class="n">defaults</span>
@@ -90,7 +90,7 @@
             <span class="s">&#39;~/.notario/config&#39;</span>
         <span class="p">]</span>
 </div>
-<div class="viewcode-block" id="NotarioApp.validate_config"><a class="viewcode-back" href="../../../notario.cli.html#notario.cli.main.NotarioApp.validate_config">[docs]</a>    <span class="k">def</span> <span class="nf">validate_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NotarioApp.validate_config"><a class="viewcode-back" href="../../../ntr.cli.html#ntr.cli.main.NotarioApp.validate_config">[docs]</a>    <span class="k">def</span> <span class="nf">validate_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c"># fix paths</span>
         <span class="n">def_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;notario&#39;</span><span class="p">,</span> <span class="s">&#39;dir&#39;</span><span class="p">)</span>
         <span class="n">abs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&#39;~&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">def_dir</span>
@@ -101,7 +101,7 @@
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">abs_dir</span><span class="p">)</span>
 
 </div></div>
-<div class="viewcode-block" id="run"><a class="viewcode-back" href="../../../notario.cli.html#notario.cli.main.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<div class="viewcode-block" id="run"><a class="viewcode-back" href="../../../ntr.cli.html#ntr.cli.main.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
 
     <span class="n">app</span> <span class="o">=</span> <span class="n">NotarioApp</span><span class="p">()</span>
     <span class="c"># app = NotarioApp(config_files=[config_path])</span>
@@ -114,7 +114,7 @@
         <span class="c"># print app.config.get(&#39;notario&#39;, &#39;debug&#39;)</span>
         <span class="c"># print &quot;--&quot; * 10</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-    <span class="k">except</span> <span class="n">notario_exc</span><span class="o">.</span><span class="n">NotarioArgumentError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">ntr_exc</span><span class="o">.</span><span class="n">NotarioArgumentError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;NotarioArgumentError: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">cement_exc</span><span class="o">.</span><span class="n">CaughtSignal</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
@@ -124,7 +124,7 @@
         <span class="n">app</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 </div>
-<div class="viewcode-block" id="get_test_app"><a class="viewcode-back" href="../../../notario.cli.html#notario.cli.main.get_test_app">[docs]</a><span class="k">def</span> <span class="nf">get_test_app</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+<div class="viewcode-block" id="get_test_app"><a class="viewcode-back" href="../../../ntr.cli.html#ntr.cli.main.get_test_app">[docs]</a><span class="k">def</span> <span class="nf">get_test_app</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
 
     <span class="n">test_defaults</span> <span class="o">=</span> <span class="n">defaults</span>

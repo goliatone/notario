@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>notario.core.note &mdash; Notario 0.5.0 documentation</title>
+    <title>ntr.core.note &mdash; Notario 0.5.0 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -48,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for notario.core.note</h1><div class="highlight"><pre>
+  <h1>Source code for ntr.core.note</h1><div class="highlight"><pre>
 <span class="c"># from sarge import shell_format</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
 <span class="kn">from</span> <span class="nn">path</span> <span class="kn">import</span> <span class="n">path</span>
@@ -63,9 +63,9 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="Note"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note">[docs]</a><span class="k">class</span> <span class="nc">Note</span><span class="p">:</span>
+<div class="viewcode-block" id="Note"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note">[docs]</a><span class="k">class</span> <span class="nc">Note</span><span class="p">:</span>
 
-<div class="viewcode-block" id="Note.list"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.list"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        List should display the name of all Notes.</span>
 <span class="sd">        !!! TODO: We should return (optionally ?) as a list.</span>
@@ -79,7 +79,7 @@
         <span class="c">#We remove trailing newline.</span>
         <span class="k">return</span> <span class="n">notes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </div>
-<div class="viewcode-block" id="Note.open"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">editor</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.open"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">editor</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Opens the Note specified by name on the</span>
 <span class="sd">        given editor.</span>
@@ -93,7 +93,7 @@
         <span class="c"># call([editor, shell_format(note)])</span>
         <span class="c"># print shell_format(note)</span>
 </div>
-<div class="viewcode-block" id="Note.edit"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.edit"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Edits a Note, and if it does not exist</span>
 <span class="sd">        it will make a new note with the content.</span>
@@ -112,14 +112,14 @@
         <span class="c">#TODO: Handle case not true(?)</span>
         <span class="k">return</span> <span class="bp">True</span>
 </div>
-<div class="viewcode-block" id="Note.new"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.new"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Note.exists"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.exists">[docs]</a>    <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.exists"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.exists">[docs]</a>    <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_note</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 
     <span class="c">#Get should give you an object, File?</span></div>
-<div class="viewcode-block" id="Note.get"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.get"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the contents of the name Note.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -130,7 +130,7 @@
         <span class="n">lines</span> <span class="o">=</span> <span class="n">note</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;strict&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Note.delete"><a class="viewcode-back" href="../../../notario.core.html#notario.core.note.Note.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Note.delete"><a class="viewcode-back" href="../../../ntr.core.html#ntr.core.note.Note.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes a Note.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

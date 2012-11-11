@@ -8,8 +8,8 @@ from cement.core import exc as cement_exc
 module_path = os.path.join(os.path.dirname(__file__), '../..')
 sys.path.append(module_path)
 
-from notario.cli.controllers.base import NotarioBaseController
-from notario.core import exc as notario_exc
+from ntr.cli.controllers.base import NotarioBaseController
+from ntr.core import exc as ntr_exc
 
 
  # TODO: figure out if we want to have also a ~/notario.ini
@@ -26,7 +26,7 @@ defaults['notario']['edt'] = "subl"
 class NotarioApp(foundation.CementApp):
     class Meta:
         label = 'notario'
-        # bootstrap = 'notario.cli.bootstrap'
+        # bootstrap = 'ntr.cli.bootstrap'
         base_controller = NotarioBaseController
 
         config_defaults = defaults
@@ -63,7 +63,7 @@ def run():
         # print app.config.get('notario', 'debug')
         # print "--" * 10
         app.run()
-    except notario_exc.NotarioArgumentError as e:
+    except ntr_exc.NotarioArgumentError as e:
         print("NotarioArgumentError: %s" % e.msg)
     except cement_exc.CaughtSignal as e:
         print(e)

@@ -1,7 +1,7 @@
 from cement.core import controller
 import os
-from notario import VERSION
-from notario.core.note import Note
+from ntr import VERSION
+from ntr.core.note import Note
 
 BANNER = """
 =====================================
