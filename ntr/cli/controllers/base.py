@@ -1,7 +1,10 @@
 from cement.core import controller
 import os
-from ntr import VERSION
+from ntr import __version__
 from ntr.core.note import Note
+import ConfigParser
+from ntr.cli.bootstrap import setup_config
+from subprocess import call
 
 BANNER = """
 =====================================
@@ -14,7 +17,12 @@ BANNER = """
 ============ (c) 2012 goliatone =====
 v%s
 -------------------------------------
- """ % VERSION
+ """ % __version__
+
+"""
+Base controller for the NotarioApp.
+It takes care of the actual implementation of the commands.
+"""
 
 
 class NotarioBaseController(controller.CementBaseController):
@@ -46,9 +54,15 @@ class NotarioBaseController(controller.CementBaseController):
     def _setup(self, base_app):
         super(NotarioBaseController, self)._setup(base_app)
 
+        print "+" * 20
+        print self.pargs
+        print "+" * 20
+
         # expand config so we can send it to the note.
         options = dict(self.config.items('notario'))
 
+        self.log.info(options)
+        print '-' * 20
         # TODO: We want to use $EDITOR, how to get that value?
         self.note = Note(**options)
 
@@ -170,6 +184,40 @@ class NotarioBaseController(controller.CementBaseController):
         name = self.pargs.note
         content = self._get_clip()
         self._save(content, name)
+
+    @controller.expose(aliases=['cfg'], help="Modify config options.")
+    def configure(self):
+        """
+        Lets the user set the values for the configuration
+        file.
+
+        If the user config file is not present, it will be
+        created.
+        """
+        # bootstrap will check to see if the file is not
+        # there. We do it this way- instead of having the
+        # method to be a hook- to be more performant.
+        setup_config(self)
+
+        path = self.config.get('notario_user', 'config')
+
+        # We make it simple, just open the config
+        # file in the predefined editor.
+        editor = self.config.get('notario', 'edt')
+        call([editor, path])
+
+        return
+
+        # We use console to collect data from user:
+        name = raw_input('Option parameter name: ')
+        value = raw_input('Option paramter value: ')
+
+        config = ConfigParser.SafeConfigParser()
+        config.read(path)
+        config.set('notario', name, value)
+        # Writing our configuration file to 'example.cfg'
+        with open(path, 'wb') as configfile:
+            config.write(configfile)
 
     @controller.expose(hide=True)
     def _save(self, content, name):
