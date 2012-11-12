@@ -9,14 +9,14 @@ Python command-line utility to manage notes.
 Installation
 ------------
 
-*on most UNIX-like systems, you’ll probably need to run the following
-``install`` commands as root or by using sudo*
+*on most UNIX-like systems, you’ll probably need to run the following*
+``install`` *commands as root or by using sudo*
 
 **pip**
 
 ::
 
-      pip install notario
+      pip install Notario.minion
 
 **from source**
 
@@ -40,11 +40,12 @@ Roadmap
 
 -  TODO: Refactor and rewrite tests.
 -  TODO: Use nosetests.
--  DONE: Add sphinx integration.
--  TODO: Let user update defaults, and save.
+-  TODO: Add documentation.
+-  *DONE: Add sphinx integration.*
+-  *DONE: Let user update defaults, and save.*
 -  TODO: Use args for ``name`` and ``content`` instead.
 -  TODO: Add ``vervose`` options.
 -  TODO: Add create from template.
--  DONE: Use config.
+-  *DONE: Use config.*
 -  TODO: Integration with services.
--  REVIEW: Rename config.ini to notario.conf (?)
+-  *DONE: Rename config.ini to notario.conf (?)*
