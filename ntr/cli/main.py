@@ -26,6 +26,10 @@ defaults['notario']['dir'] = "/.notes/"
 defaults['notario']['ext'] = ".txt"
 defaults['notario']['edt'] = "subl"
 
+"""
+Entry point for the Notario.minion application.
+"""
+
 
 class NotarioApp(foundation.CementApp):
     class Meta:
@@ -49,8 +53,8 @@ class NotarioApp(foundation.CementApp):
         ]
 
     def validate_config(self):
-        print ('Validate config')
-
+        """
+        """
         # fix paths
         def_dir = self.config.get('notario', 'dir')
         abs_dir = USER_PATH + def_dir

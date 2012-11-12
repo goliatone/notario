@@ -82,7 +82,7 @@ It takes care of the actual implementation of the commands.</p>
 
 <dl class="attribute">
 <dt id="ntr.cli.controllers.base.NotarioBaseController.Meta.config_defaults">
-<tt class="descname">config_defaults</tt><em class="property"> = {'debug': True, 'note': 'Note', 'e': 'subl'}</em><a class="headerlink" href="#ntr.cli.controllers.base.NotarioBaseController.Meta.config_defaults" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">config_defaults</tt><em class="property"> = {'debug': True, 'note': 'Note', 'e': 'nano'}</em><a class="headerlink" href="#ntr.cli.controllers.base.NotarioBaseController.Meta.config_defaults" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -120,7 +120,10 @@ created.</p>
 <dl class="method">
 <dt id="ntr.cli.controllers.base.NotarioBaseController.default">
 <tt class="descclassname">NotarioBaseController.</tt><tt class="descname">default</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/ntr/cli/controllers/base.html#NotarioBaseController.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ntr.cli.controllers.base.NotarioBaseController.default" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Default entry point for cli interface. If not method
+is explicitly provided, this method is executed and the
+action is inferred from the provided options.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ntr.cli.controllers.base.NotarioBaseController.delete">

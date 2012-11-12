@@ -6,6 +6,9 @@ import ConfigParser
 from ntr.cli.bootstrap import setup_config
 from subprocess import call
 
+"""
+Banner used to display program's info.
+"""
 BANNER = """
 =====================================
   _   _       _             _
@@ -32,7 +35,7 @@ class NotarioBaseController(controller.CementBaseController):
 
         config_defaults = dict(
             note='Note',
-            e='subl',
+            e='nano',
             debug=True
         )
         arguments = [
@@ -68,6 +71,12 @@ class NotarioBaseController(controller.CementBaseController):
 
     @controller.expose(hide=True, aliases=['run'])
     def default(self):
+        """
+        Default entry point for cli interface. If not method
+        is explicitly provided, this method is executed and the
+        action is inferred from the provided options.
+        """
+
         #short
         args = self.pargs
 
@@ -210,7 +219,7 @@ class NotarioBaseController(controller.CementBaseController):
 
         # We use console to collect data from user:
         name = raw_input('Option parameter name: ')
-        value = raw_input('Option paramter value: ')
+        value = raw_input('Option parameter value: ')
 
         config = ConfigParser.SafeConfigParser()
         config.read(path)
