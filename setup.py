@@ -4,7 +4,7 @@ import os
 import glob
 from setuptools import setup, find_packages
 
-from ntr import VERSION
+from ntr import __version__
 
 description = "A command-line utility to manage notes."
 
@@ -19,7 +19,7 @@ datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
     name="Notario.minion",
-    version=VERSION,
+    version=__version__,
     description=description,
     long_description=long_description,
     url='https://github.com/goliatone/notario',
