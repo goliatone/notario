@@ -73,10 +73,6 @@ def run():
     #handler
     try:
         app.setup()
-        # print '--' * 10
-        # print app.config.get_sections()
-        # print app.config.get('notario', 'debug')
-        # print "--" * 10
         app.run()
     except ntr_exc.NotarioArgumentError as e:
         print("NotarioArgumentError: %s" % e.msg)
