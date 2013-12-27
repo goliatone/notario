@@ -57,15 +57,9 @@ class NotarioBaseController(controller.CementBaseController):
     def _setup(self, base_app):
         super(NotarioBaseController, self)._setup(base_app)
 
-        print "+" * 20
-        print self.pargs
-        print "+" * 20
-
         # expand config so we can send it to the note.
         options = dict(self.config.items('notario'))
 
-        self.log.info(options)
-        print '-' * 20
         # TODO: We want to use $EDITOR, how to get that value?
         self.note = Note(**options)
 
@@ -84,9 +78,9 @@ class NotarioBaseController(controller.CementBaseController):
         action = 'list'
 
         # we are just unboxing all the args
-        (namespace, n, c, cp, pt, e, editor, p) = vars(args)
-        c = 'empty' if not c else c
-        # self.log.info('Content: ' + c)
+        # (namespace, n, c, cp, pt, e, editor, p) = vars(args)
+        # c = 'empty' if not c else c
+        # # self.log.info('Content: ' + c)
 
         # Let's figure out the action based on the
         # arguments we got:
@@ -117,7 +111,7 @@ class NotarioBaseController(controller.CementBaseController):
 
         # self.log.info("We are executing action: " + action)
 
-        # dinamically access the required method:
+        # dynamically access the required method:
         action = getattr(self, action)
         action()
 
