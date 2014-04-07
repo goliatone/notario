@@ -3,8 +3,7 @@
 import os
 import glob
 from setuptools import setup, find_packages
-
-from ntr import __version__
+import ntr
 
 description = "A command-line utility to manage notes."
 
@@ -14,12 +13,15 @@ try:
 except:
     long_description = description
 
+tpl = os.path.join(cur_dir, 'data', 'template.notario')
+ntr.install_minion_config(template=tpl)
+
 datadir = os.path.join(cur_dir, 'data', 'config')
 datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
     name="Notario.minion",
-    version=__version__,
+    version=ntr.get_version(),
     description=description,
     long_description=long_description,
     url='https://github.com/goliatone/notario',
